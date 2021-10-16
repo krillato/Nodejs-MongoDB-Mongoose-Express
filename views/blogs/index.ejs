@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeeTime</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <%- include('../layout') %>
+   <div class="py-2">
+       <a href="/blogs/add" class="btn btn-primary">เขียนบทความ</a>
+    </div>
+    
+    <hr>
+    <h2> <%= data %> </h2>
+    <h4>By TeeTime</h4>
+
+    <p>
+        <!-- <%= blogs %> -->
+
+        <!--  สร้างฟังก์ชัน วนรอบตามจำนวนข้อมูลที่มี -->
+        <% Object.values(blogs).forEach(function(blog){ %>  
+            <h4><b>บทควาท :</b> <%= blog.title %></h4>
+            <p><b>ผู้เขียน :</b>  <%= blog.author %></p>
+            <p><b>หมวดหมู่ :</b>  <%= blog.category %></p>
+            <a href="/blogs/edit/<%= blog._id %>">แก้ไข</a>
+            <a href="/blogs/delete/<%= blog._id %>" onclick="return confirm('ยืนยันการลบข้อมูล')">ลบ</a>
+            <hr>
+       <% }) %>
+    </p>
+
+</body>
+</html>
